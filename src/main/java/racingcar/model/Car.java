@@ -8,4 +8,16 @@ public class Car {
         this.name = name;
         distance = 0;
     }
+
+    public String getName(){
+        return name;
+    }
+
+    public int getDistance(){
+        return distance;
+    }
+
+    public void go(){
+        distance++;
+    }
 }
