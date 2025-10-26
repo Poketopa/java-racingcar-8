@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.dto.RaceResult;
-import racingcar.dto.RacingcarRequest;
+import racingcar.dto.InputRequest;
 import racingcar.parser.InputParser;
 import racingcar.service.RacingcarService;
 import racingcar.validator.InputValidator;
@@ -36,7 +36,7 @@ public class RacingcarController {
         List<String> carNames = inputParser.parseCarNames(rawCarNames);
         int tryCount = inputParser.parseTryCount(rawTryCount);
 
-        RacingcarRequest request = new RacingcarRequest(carNames, tryCount);
+        InputRequest request = new InputRequest(carNames, tryCount);
         RaceResult raceResult = racingcarService.startRace(request);
 
         outputView.printRaceResult(carNames, tryCount, raceResult);

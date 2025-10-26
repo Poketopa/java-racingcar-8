@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.dto.CarSnapshot;
 import racingcar.dto.RaceResult;
-import racingcar.dto.RacingcarRequest;
+import racingcar.dto.InputRequest;
 import racingcar.dto.RoundSnapshot;
 import racingcar.model.Car;
 
 public class RacingcarService {
-    public RaceResult startRace(RacingcarRequest request) {
+    public RaceResult startRace(InputRequest request) {
         List<Car> carList = createCar(request.carNames());
 
         List<RoundSnapshot> roundSnapshotList = race(carList, request.tryCount());
