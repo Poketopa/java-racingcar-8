@@ -1,3 +1,4 @@
 package racingcar.dto;
 
-public record RoundSnapshot(String name, int distance) {}
+public record CarSnapshot(String name, int distance) {
+}
