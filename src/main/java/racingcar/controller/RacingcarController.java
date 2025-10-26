@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.dto.RaceResult;
 import racingcar.dto.RacingcarRequest;
 import racingcar.parser.InputParser;
 import racingcar.service.RacingcarService;
@@ -16,7 +17,8 @@ public class RacingcarController {
     private final OutputView outputView;
 
     public RacingcarController(RacingcarService racingcarService,
-                               InputValidator inputValidator, InputParser inputParser, InputView inputView, OutputView outputView) {
+                               InputValidator inputValidator, InputParser inputParser, InputView inputView,
+                               OutputView outputView) {
         this.racingcarService = racingcarService;
         this.inputValidator = inputValidator;
         this.inputParser = inputParser;
@@ -24,7 +26,7 @@ public class RacingcarController {
         this.outputView = outputView;
     }
 
-    public void run(){
+    public void run() {
         String rawCarNames = inputView.inputCarNames();
         String rawTryCount = inputView.inputTryCount();
 
@@ -33,19 +35,10 @@ public class RacingcarController {
 
         List<String> carNames = inputParser.parseCarNames(rawCarNames);
         int tryCount = inputParser.parseTryCount(rawTryCount);
+
         RacingcarRequest request = new RacingcarRequest(carNames, tryCount);
+        RaceResult raceResult = racingcarService.startRace(request);
 
-        racingcarService.startRace(request);
-
-
-
-
-
-
-
-
-        // 시도 횟수 검증
-
-        // N번 실행
+        outputView.printRaceResult(carNames, tryCount, raceResult);
     }
 }
