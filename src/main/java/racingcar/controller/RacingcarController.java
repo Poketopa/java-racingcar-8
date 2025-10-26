@@ -16,6 +16,15 @@ public class RacingcarController {
     }
 
     public void run(){
+        // 이름 입력
+        String carName = inputView.inputCarName();
 
+        // 이름 검증
+
+        // 시도 횟수 입력
+
+        // 시도 횟수 검증
+
+        // N번 실행
     }
 }

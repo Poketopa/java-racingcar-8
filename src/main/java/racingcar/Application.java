@@ -13,5 +13,7 @@ public class Application {
 
         final RacingcarController racingcarController =
                 new RacingcarController(racingcarService, inputView, outputView);
+
+        racingcarController.run();
     }
 }
