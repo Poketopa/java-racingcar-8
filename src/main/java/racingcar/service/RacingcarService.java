@@ -4,21 +4,17 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.dto.CarSnapshot;
-import racingcar.dto.RaceResult;
 import racingcar.dto.InputRequest;
+import racingcar.dto.RaceResult;
 import racingcar.dto.RoundSnapshot;
 import racingcar.model.Car;
 
 public class RacingcarService {
     public RaceResult startRace(InputRequest request) {
         List<Car> carList = createCar(request.carNames());
-
         List<RoundSnapshot> roundSnapshotList = race(carList, request.tryCount());
-
         int longestDistance = getLongestDistance(carList);
-
         List<Car> winnerList = findWinner(carList, longestDistance);
-
         return new RaceResult(roundSnapshotList, winnerList);
     }
 

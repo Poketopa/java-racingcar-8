@@ -5,13 +5,12 @@ import java.util.List;
 import java.util.regex.Pattern;
 import racingcar.exception.CarNameInvalidException;
 import racingcar.exception.TryCountInvalidException;
-import racingcar.model.Car;
 
 public class InputValidator {
     private static final Pattern SPECIAL_ASCII = Pattern.compile("[^\\p{L}\\p{N}]");
 
     public void validateCarNames(String carNames) {
-        if(carNames == null || carNames.isBlank()) {
+        if (carNames == null || carNames.isBlank()) {
             throw new CarNameInvalidException("자동차 이름은 공백일 수 없습니다.");
         }
         // null, 공백이면 안됨
@@ -39,7 +38,7 @@ public class InputValidator {
             throw new TryCountInvalidException("잘못된 시도 횟수 입력입니다.");
         }
 
-        if(testNumber <= 0){
+        if (testNumber <= 0) {
             throw new TryCountInvalidException("시도 횟수는 자연수여야 합니다.");
         }
     }

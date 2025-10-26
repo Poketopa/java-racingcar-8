@@ -4,20 +4,20 @@ public class Car {
     String name;
     int distance;
 
-    public Car(String name){
+    public Car(String name) {
         this.name = name;
         distance = 0;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public int getDistance(){
+    public int getDistance() {
         return distance;
     }
 
-    public void go(){
+    public void go() {
         distance++;
     }
 }
