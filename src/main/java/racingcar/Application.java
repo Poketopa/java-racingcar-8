@@ -2,12 +2,14 @@ package racingcar;
 
 import racingcar.controller.RacingcarController;
 import racingcar.service.RacingcarService;
+import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        final RacingcarService racingcarService = new RacingcarService();
+        final InputValidator inputValidator = new InputValidator();
+        final RacingcarService racingcarService = new RacingcarService(inputValidator);
         final InputView inputView = new InputView();
         final OutputView outputView = new OutputView();
 

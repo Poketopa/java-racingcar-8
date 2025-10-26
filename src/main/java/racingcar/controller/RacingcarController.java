@@ -17,7 +17,7 @@ public class RacingcarController {
 
     public void run(){
         // 이름 입력
-        String carName = inputView.inputCarName();
+        String carName = inputView.inputCarNames();
 
         // 이름 검증
 
