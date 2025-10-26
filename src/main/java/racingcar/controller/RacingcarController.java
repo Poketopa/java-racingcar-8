@@ -17,11 +17,13 @@ public class RacingcarController {
 
     public void run(){
         // 이름 입력
-        String carName = inputView.inputCarNames();
-
+        String carNames = inputView.inputCarNames();
+        // 시도 횟수 입력
+        String tryCount = inputView.inputTryCount();
         // 이름 검증
 
-        // 시도 횟수 입력
+
+
 
         // 시도 횟수 검증
 
