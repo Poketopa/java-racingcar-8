@@ -28,7 +28,8 @@ public class RacingcarController {
         // 시도 횟수 입력
         String rawTryCount = inputView.inputTryCount();
         // 이름 검증
-
+        inputValidator.validateCarName(rawCarNames);
+        inputValidator.validateTryCount(rawTryCount);
 
 
 
