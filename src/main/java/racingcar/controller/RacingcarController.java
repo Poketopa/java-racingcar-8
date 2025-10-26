@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import java.util.List;
+import racingcar.dto.RacingcarRequest;
 import racingcar.parser.InputParser;
 import racingcar.service.RacingcarService;
 import racingcar.validator.InputValidator;
@@ -23,13 +25,22 @@ public class RacingcarController {
     }
 
     public void run(){
-        // 이름 입력
         String rawCarNames = inputView.inputCarNames();
-        // 시도 횟수 입력
         String rawTryCount = inputView.inputTryCount();
-        // 이름 검증
-        inputValidator.validateCarName(rawCarNames);
+
+        inputValidator.validateCarNames(rawCarNames);
         inputValidator.validateTryCount(rawTryCount);
+
+        List<String> carNames = inputParser.parseCarNames(rawCarNames);
+        int tryCount = inputParser.parseTryCount(rawTryCount);
+        RacingcarRequest request = new RacingcarRequest(carNames, tryCount);
+
+        racingcarService.startRace(request);
+
+
+
+
+
 
 
 
