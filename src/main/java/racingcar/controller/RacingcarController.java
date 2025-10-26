@@ -8,13 +8,15 @@ import racingcar.view.OutputView;
 
 public class RacingcarController {
     private final RacingcarService racingcarService;
+    private final InputValidator inputValidator;
     private final InputParser inputParser;
     private final InputView inputView;
     private final OutputView outputView;
 
     public RacingcarController(RacingcarService racingcarService,
-                               InputParser inputParser, InputView inputView, OutputView outputView) {
+                               InputValidator inputValidator, InputParser inputParser, InputView inputView, OutputView outputView) {
         this.racingcarService = racingcarService;
+        this.inputValidator = inputValidator;
         this.inputParser = inputParser;
         this.inputView = inputView;
         this.outputView = outputView;

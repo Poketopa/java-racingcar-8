@@ -10,13 +10,13 @@ import racingcar.view.OutputView;
 public class Application {
     public static void main(String[] args) {
         final InputValidator inputValidator = new InputValidator();
-        final RacingcarService racingcarService = new RacingcarService(inputValidator);
+        final RacingcarService racingcarService = new RacingcarService();
         final InputParser inputParser = new InputParser();
         final InputView inputView = new InputView();
         final OutputView outputView = new OutputView();
 
         final RacingcarController racingcarController =
-                new RacingcarController(racingcarService, inputParser, inputView, outputView);
+                new RacingcarController(inputValidator, racingcarService, inputParser, inputView, outputView);
 
         racingcarController.run();
     }
