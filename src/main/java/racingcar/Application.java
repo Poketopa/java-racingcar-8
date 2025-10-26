@@ -16,7 +16,7 @@ public class Application {
         final OutputView outputView = new OutputView();
 
         final RacingcarController racingcarController =
-                new RacingcarController(inputValidator, racingcarService, inputParser, inputView, outputView);
+                new RacingcarController(racingcarService, inputValidator, inputParser, inputView, outputView);
 
         racingcarController.run();
     }
