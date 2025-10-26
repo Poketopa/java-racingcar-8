@@ -31,10 +31,16 @@ public class InputValidator {
     }
 
     public void validateTryCount(String tryCount) {
+        int testNumber;
+
         try {
-            int testNumber = Integer.parseInt(tryCount);
+            testNumber = Integer.parseInt(tryCount);
         } catch (NumberFormatException e) {
             throw new TryCountInvalidException("잘못된 시도 횟수 입력입니다.");
+        }
+
+        if(testNumber <= 0){
+            throw new TryCountInvalidException("시도 횟수는 자연수여야 합니다.");
         }
     }
 }
