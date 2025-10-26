@@ -13,7 +13,7 @@ public class InputValidator {
         if (carNames == null || carNames.isBlank()) {
             throw new CarNameInvalidException("자동차 이름은 공백일 수 없습니다.");
         }
-        // null, 공백이면 안됨
+
         List<String> carNamesList = Arrays.asList(carNames.split(","));
 
         for (String name : carNamesList) {
