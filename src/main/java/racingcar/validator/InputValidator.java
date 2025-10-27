@@ -7,39 +7,66 @@ import racingcar.exception.CarNameInvalidException;
 import racingcar.exception.TryCountInvalidException;
 
 public class InputValidator {
+    private static final int MAX_NAME_LENGTH = 5;
     private static final Pattern SPECIAL_ASCII = Pattern.compile("[^\\p{L}\\p{N}]");
 
     public void validateCarNames(String carNames) {
-        if (carNames == null || carNames.isBlank()) {
+        checkBlankCarNames(carNames);
+        List<String> carNamesList = Arrays.asList(carNames.split(","));
+        for (String name : carNamesList) {
+            checkEachCarNames(name);
+        }
+    }
+
+    private static void checkEachCarNames(String name) {
+        checkBlankCarName(name);
+        checkCarNameLengthLimit(name);
+        checkSpecialCharInCarName(name);
+    }
+
+    private static void checkSpecialCharInCarName(String name) {
+        if (SPECIAL_ASCII.matcher(name).find()) {
+            throw new CarNameInvalidException("자동차 이름에는 특수문자가 포함되지 않아야 합니다.");
+        }
+    }
+
+    private static void checkCarNameLengthLimit(String name) {
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new CarNameInvalidException("자동차 이름의 길이는 5 이하여야 합니다.");
+        }
+    }
+
+    private static void checkBlankCarName(String name) {
+        if (name.isBlank()) {
             throw new CarNameInvalidException("자동차 이름은 공백일 수 없습니다.");
         }
+    }
 
-        List<String> carNamesList = Arrays.asList(carNames.split(","));
-
-        for (String name : carNamesList) {
-            if (name.isBlank()) {
-                throw new CarNameInvalidException("자동차 이름은 공백일 수 없습니다.");
-            }
-            if (name.length() > 5) {
-                throw new CarNameInvalidException("자동차 이름의 길이는 5 이하여야 합니다.");
-            }
-            if (SPECIAL_ASCII.matcher(name).find()) {
-                throw new CarNameInvalidException("자동차 이름에는 특수문자가 포함되지 않아야 합니다.");
-            }
+    private static void checkBlankCarNames(String carNames) {
+        if (carNames == null || carNames.isBlank()) {
+            throw new CarNameInvalidException("자동차 이름은 공백일 수 없습니다.");
         }
     }
 
     public void validateTryCount(String tryCount) {
-        int testNumber;
+        int validTryCount;
+        validTryCount = checkInvalidTryCount(tryCount);
+        checkNegativeTryCount(validTryCount);
+    }
 
+    private void checkNegativeTryCount(int validTryCount) {
+        if (validTryCount <= 0) {
+            throw new TryCountInvalidException("시도 횟수는 자연수여야 합니다.");
+        }
+    }
+
+    private static int checkInvalidTryCount(String tryCount) {
+        int validTryCount;
         try {
-            testNumber = Integer.parseInt(tryCount);
+            validTryCount = Integer.parseInt(tryCount);
         } catch (NumberFormatException e) {
             throw new TryCountInvalidException("잘못된 시도 횟수 입력입니다.");
         }
-
-        if (testNumber <= 0) {
-            throw new TryCountInvalidException("시도 횟수는 자연수여야 합니다.");
-        }
+        return validTryCount;
     }
 }
