@@ -37,7 +37,7 @@ public class RacingcarController {
         int tryCount = inputParser.parseTryCount(rawTryCount);
 
         InputRequest request = new InputRequest(carNames, tryCount);
-        RaceResult raceResult = racingcarService.startRace(request);
+        RaceResult raceResult = racingcarService.getRaceResult(request);
 
         outputView.printRaceResult(carNames, tryCount, raceResult);
     }
